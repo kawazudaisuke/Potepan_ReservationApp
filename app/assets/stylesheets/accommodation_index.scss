@@ -1,0 +1,24 @@
+
+
+.accommodations_table{
+    margin:0 auto;
+    text-align:center;
+    margin-bottom:20px;
+    
+    td{ 
+        height:50px;
+      }
+    
+    .left{
+        width:300px;
+    }
+    
+    .right{
+        width:500px;
+    }
+    
+    .blank{
+        border: 2px solid red;
+        height:100px;
+    }
+}

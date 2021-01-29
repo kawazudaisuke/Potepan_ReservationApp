@@ -1,0 +1,51 @@
+<%= stylesheet_link_tag "accommodation_show" %>
+
+<h1 class="page-title">予約可能ルーム一覧</h1>
+
+<% @accommos.each do |accommo| %>
+  <table class="accommo_index">
+    <tbody>
+      <tr>
+        <td class="right">
+          施設名
+        </td>
+        <td class="left">
+          <%= link_to( accommo.name,"/reservation/new/#{accommo.id}") %>
+        </td>
+      </tr>
+      <tr>
+        <td class="right">
+          利用料
+        </td>
+        <td class="left">
+          <%= accommo.fee%>
+        </td>
+      </tr>
+ 　　　<tr>
+        <td class="right">
+          エリア
+        </td>
+        <td class="left">
+          <%= accommo.area%>
+        </td>
+      </tr>      
+      <tr>
+        <td class="right">
+          室内写真
+        </td>
+        <td class="left">
+          <%= image_tag "#{accommo.accommo_image}",:width => "250px",:height => "200px" %>
+        </td>
+      </tr>
+      <tr>
+        <td class="right">
+          コメント
+        </td>
+        <td class="left">
+          <%= accommo.description %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="blank"></div>
+<% end %>

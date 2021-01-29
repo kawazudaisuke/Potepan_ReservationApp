@@ -1,0 +1,83 @@
+<% require 'date' %>
+<%= stylesheet_link_tag "reservation_check" %>
+
+<h1 class ="page-title">予約確認</h1>
+
+<table>
+    <% date_from = @date_from %>
+　　<% date_to = @date_to %>
+　　<% days_to_stay = date_to.to_date - date_from.to_date + 1 %>
+　　<% total_price = @fee.to_i * @guests.to_i * days_to_stay.to_i %>
+　　<!--人数＊料金を表示する為に数値に変換する必要がある為、一度変数に代入”-->
+    <tr>
+        <td class="left">
+            施設名
+        </td>
+        <td class="right">
+            <%= @accommo_name %>
+        </td>
+    </tr>
+    <tr>
+        <td class="left">
+            宿泊人数
+        </td>
+        <td class="right">
+            <%= @guests %>人
+        </td>
+    </tr>
+    <tr>
+        <td class="left">
+            宿泊日数
+        </td>
+        <td class="right">
+            <%= days_to_stay.to_i %> 日間
+        </td>
+    </tr>
+    <tr>
+        <td class="left">
+            料金
+        </td>
+        <td class="right">
+            <%= total_price%>円
+        </td>
+    </tr>
+    <tr>
+        <td class="left">
+            チェックイン日
+        </td>
+        <td class="right">
+            <%= date_from.to_date.strftime("%Y年%-m月%-d日")  %>
+        </td>
+    </tr>
+    <tr>
+        <td class="left">
+            チェックアウト日
+        </td>
+        <td class="right">
+            <%= date_to.to_date.strftime("%Y年%-m月%-d日")  %>
+        </td>
+    </tr>
+    <!-- .to_dateでdateに変換する為に.to_dateを記載-->
+    <%= form_tag ("/reservation/create") do %>
+        <%= hidden_field_tag :name, @accommo_name%>
+        <%= hidden_field_tag :guests, @guests %>
+        <%= hidden_field_tag :fee, @fee %>
+        <%= hidden_field_tag :date_from, @date_from %>
+        <%= hidden_field_tag :date_to, @date_to %>
+        <%= hidden_field_tag :user_id, @user_id %>
+        <%= hidden_field_tag :accommo_id, @accommo_id %> <!--施設id--> 
+    <tr>
+        <td class="button-container">
+            <div>
+                <input class="button" type="submit" name="return" value="戻る">
+            </div>
+        </td>
+        <td class="button-container">
+            <div>
+                <input class="button" type="submit" name="confirm" value="予約する">
+            </div>
+        </td>
+    </tr>    
+        
+    <% end %>
+</table>

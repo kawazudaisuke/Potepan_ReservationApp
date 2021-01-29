@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag("user_login_form")%>
+
+<h1 class="page-title">ログイン</h1>
+
+<div class="message_container">
+    <% if @error_message %>
+         <div class = "error_message">
+             <%= @error_message %>
+         </div>
+    <%end%>
+
+ <% if flash[:notice]%>
+     <div class ="logedin_message">
+        <%= flash[:notice] %>
+     </div>
+<%end%>
+</div>
+
+<%= form_tag("/user/login") do%>
+<table> 
+    <tr>
+        <td class="left">メールアドレス</td>
+        <td class="right"><input type="text" name="e_mail" value="<%= @e_mail %>"></td>
+    </tr>
+    <tr>
+       <td class="left">パスワード</td>
+       <td class="right"><input type="password" name="password" ></td>
+    </tr>
+    <tr>
+       <td colspan="2">
+           <div class="button-container">
+             <input class="button" type="submit" value="ログイン">
+           </div>
+        </td>
+    </tr>
+</table>
+<%end%>
