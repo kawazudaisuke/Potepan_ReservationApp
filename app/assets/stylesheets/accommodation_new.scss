@@ -1,0 +1,32 @@
+.message_container{
+    text-align:center;
+}
+
+.registrating_accommodations_table{
+    margin:0 auto;
+    margin-bottom:50px;
+    width:500px;
+    border-collapse:collapse;
+    td {
+        border:5px solid white;
+    }
+    
+    .left{
+        height:50px;
+    }
+    
+    .right{
+        height:50px;
+    }
+
+}
+
+input.submit{
+    width:100px;
+    height:40px ;
+}
+
+#submit{
+    padding-top:10px;
+    text-align:center;
+}

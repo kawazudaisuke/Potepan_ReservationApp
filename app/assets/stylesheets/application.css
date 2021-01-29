@@ -1,15 +1,113 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+*{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+li {
+    list-style-type:none
+}
+
+a{
+    text-decoration:none;
+    color:black;
+    font-weight:bold;
+}
+
+a:hover{
+    color:#dddddd;
+}
+/* 共通レイアウトに関する設定*/
+header{
+    background-color:#1f628e;
+}
+
+.head_container{
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:90%;
+}
+
+.logo_container{
+    height:250px;
+}
+
+.user_humburger{
+    display: inline-block;
+    width:150px;
+    height:200px;
+}
+
+.top_image{
+    display: inline-block;
+    margin-left:100px;
+}
+
+.top_search{
+    display: inline-block;
+    height:100px;
+    width:350px;
+}
+
+.top_logo{
+    display: inline-block;
+    margin-left:100px;
+}
+
+/* 各ビューに共通コンテナを作成*/
+.container{
+    display:flex;
+    justify-content:center;
+    margin: 50px 100px ;
+}
+
+/* 各ボタンの形式を統一*/
+.button{
+    width:100px;
+    border-radius: 5px;
+}
+/* 各テーブルの枠線等を統一*/
+td {
+        border-radius: 5px;
+        border:1px solid white;
+    }
+.left{
+      background-color: #82aaaa;
+      text-align:center;
+}
+
+.right{
+      background-color: #dddddd;
+      text-align:center;
+}
+    
+/* 各ビューのタイトルを統一*/
+.page-title {
+    color:#888888;
+    text-align:center;
+    margin-top:50px;
+}
+
+
+.login_registration{
+    display:inline-block;
+    height:200px;
+}
+
+
+.default_accommo{
+    width:300px;
+    height:200px;
+}
+
+
+/* 検索結果*/
+.result_image{
+     width:300px;
+    height:200px;
+}
+
+/* 入力フォームの様式を統一*/
+.input_text {
+        width:250px;
+}

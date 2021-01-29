@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag "accommodation_search" %>
+
+<h1 class="page-title">検索結果</h1>
+
+<% if @results_area %>
+    <% @results_area.each do |result| %>
+        <table class="results_table">
+            <div class="result">
+                <tr>
+                    <td class="left">
+                        <%= link_to( result.name,"/reservation/new/#{result.id}")%>
+                    </td>
+                    <td class="right">
+                        <%= image_tag "#{result.accommo_image}",:width => "250px",:height => "200px" %>
+                    </td>
+                </tr>
+            </div>
+        </table>
+    <% end %>
+<% end %>

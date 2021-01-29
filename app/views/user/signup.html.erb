@@ -1,0 +1,62 @@
+<%= stylesheet_link_tag "user_signup" %>
+
+<h1 class="page-title">ユーザー新規登録</h1>
+
+<%= form_with url: user_create_path  do |form|%>
+
+<table>
+     <tr>
+          <td class="left">
+               メールアドレス
+          </td>
+          <td class="right">
+               <input class="input_text" name="e_mail" type="text">
+          </td>
+     </tr>
+     <tr>
+          <td class="left">
+               パスワード
+          </td>
+          <td class="right">
+               <input class="input_text" name="password" type="password">
+          </td>
+     </tr>
+     <tr>
+          <td class="left">
+               パスワード(確認用)
+          </td>
+          <td class="right">
+               <input class="input_text" name="password_2" type="password">
+          </td>
+     </tr>
+     <tr>
+          <td class="left">
+               ユーザーネーム
+          </td>
+          <td class="right">
+               <input class="input_text" name="name" type="text">
+          </td>
+     </tr>
+     <tr>
+          <td class="left">
+               自己紹介
+          </td>
+          <td class="right">
+               <textarea cols="40" rows="5" name="introduction"></textarea>
+          </td>
+     </tr>
+     <tr>
+          <td class="left">
+               プロフィール画像
+          </td>
+          <td class="right">
+               <%= form.file_field :image%>
+          </td>
+     </tr>
+   　<tr>
+   　     <td colspan ="2">
+   　        <input type="submit" value="登録">
+   　     </td>
+     </tr>
+</table>
+<% end %>

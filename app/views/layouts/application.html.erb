@@ -7,10 +7,62 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      
+      <div class="head_container">
+        
+        <div class="logo_container">
+          <%= link_to (image_tag "/accommodation/logo.jpg" ,width:"250px",height:"250px", class:"top_image"),("/") %>
+        </div>
+        
+        <% if session[:user_id]%>
+        <div class="top_search">
+          <%= form_tag ("/accommodation/search") do%>
+    　　　   　<input type="text" name = "name">
+        　   <input class="button" type="submit" value="検索">
+      　    <% end %> 
+      　     <%= form_tag ("/accommodation/search_area") do%>
+    　　　   　<input type="text" name = "area">
+        　   <input class="button"  type="submit" value="エリア検索">
+      　    <% end %> 
+        </div>
+        <% end %>
+        
+        <div class = "login_registration">
+          <ul>
+            <% if session[:user_id]%>
+              <li><%= link_to("ユーザー","/user/show") %></li>
+              <li><%= session[:e_mail]%></li>
+              <li><%= link_to("ログアウト","/user/logout")%></li>
+              <li><%= link_to("新規登録","/user/signup")%></li>
+              <li><%= link_to("プロフィール","/user/prof")%></li>
+              <li><%= link_to("予約一覧","/reservation/index")%></li>
+            <% else %>
+              <li><%= link_to("ログイン","/user/login")%></li>
+              <li><%= link_to("新規登録","/user/signup")%></li>
+            <% end %>
+          </ul>
+        </div>
+        
+        <div class= "user_humburger">
+          <ul>
+            <% if session[:user_id]%>
+              <li><%= link_to("ルーム登録","/accommodation/new")%></li>
+              <li><%= link_to("マイルーム一覧","/accommodation/index")%></li>
+              <li><%= link_to("ルーム予約","/accommodation/show")%></li>
+            <% end %>
+          </ul>
+        </div>
+        
+      </div>
+
+    </header>
+    
     <%= yield %>
   </body>
 </html>

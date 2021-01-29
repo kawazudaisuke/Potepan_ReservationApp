@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag "reservation_new" %>
+<h1 class="page-title">宿泊予約</h1>
+
+<div class="container"> 
+
+
+<%= form_tag ("/reservation/check") do%>
+    <%= hidden_field_tag :fee, @reservation.fee %>
+    <%= hidden_field_tag :name, @reservation.name %>
+    <%= hidden_field_tag :id, @reservation.id %>
+    <%= hidden_field_tag :user_id, @user_id %>
+    <%= hidden_field_tag :accommo_id, @reservation.id %> <!--施設id--> 
+    <table>
+        <tr>
+            <td class="left"><%= @reservation.name%></td>
+            <td class="right">１泊　<%= @reservation.fee%>円</td>
+        </tr>
+        <tr>
+            <td class="left">チェックイン日</td>
+            <td class="right"><input type="date" name = "date_from"><td>
+        </tr>
+        <tr>
+            <td class="left">チェックアウト日</td>
+            <td class="right"><input type="date" name = "date_to"></td>
+        </tr>
+        <tr>
+            <td class="left">人数</td>
+            <td class="right">
+              <%= select_tag("guests", options_for_select(array))%> <!--arrayメソッドはhelperにて定義-->
+            </td>
+        </tr>
+        <tr>
+            <td colspan ="2" class ="submit">
+                <input class="button" type = "submit" value = "予約する">
+            </td>
+        </tr>
+    </table>
+<% end %>
+</div>

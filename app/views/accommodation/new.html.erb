@@ -1,0 +1,61 @@
+<%= stylesheet_link_tag "accommodation_new" %>
+
+<h1 class="page-title">ルーム新規登録</h1>
+
+<div class="message_container">
+    <% if flash[:notice]%>
+      <%= flash[:notice]%>
+    <%end%>
+</div>
+
+<%= form_with url: accommodation_create_path  do |form|%>
+
+<table class="registrating_accommodations_table">
+    <tr>
+        <td class="left">
+            ルーム名
+        </td>
+        <td class="right">
+            <input class="input_text" name="name" type ="text">
+        </td>
+    </tr>
+    <tr>
+        <td class="left">
+            料金
+        </td>
+        <td class="right">
+            <input class="input_text" name="fee" type = "text" >
+        </td>
+    </tr>
+    <tr>
+        <td class="left">
+            エリア
+        </td>
+        <td class="right">
+            <input class="input_text" name="area" type = "text" >
+        </td>
+    </tr>
+    <tr>
+        <td class="left">
+            コメント
+        </td>
+        <td class="right">
+            <textarea cols="40" rows="5" name="description"></textarea>
+        </td>
+    </tr>
+    <tr> 
+        <td class="left">
+            イメージ
+        </td>
+        <td class="right" id="selecting_file">
+            <% form.label :accommo_image%>
+            <%= form.file_field :accommo_image%>
+        </td>
+    </tr>
+    <tr>
+        <td colspan = "2" id="submit">
+            <input class="submit" type="submit" value="登録">
+        </td>
+    </tr>
+</table>
+<% end %>

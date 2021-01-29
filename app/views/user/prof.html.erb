@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag"user_prof"%>
+
+<h1 class="page-title">プロフィール</h1>
+<div class="user_image">
+<%= image_tag "#{@user.image}",:width => "250px",:height => "200px" %>
+</div>
+<div class="container">
+  <table>
+    <tr>
+      <td class="left">
+        ユーザーネーム
+      </td>
+      <td class="right">
+        <%= @user.name%>
+      </td>
+    </tr>
+    <tr>
+      <td class="left">
+        自己紹介
+      </td>
+      <td class="right">
+        <%= @user.introduction%>
+      </td>
+    </tr>
+    <tr>
+        <td colspan ="2" class="edit">
+          <%= link_to("編集","/user/edit_prof")%>
+        </td>
+    </tr>
+  </table>
+</div>
+<%= render"shared/account_prof"%>

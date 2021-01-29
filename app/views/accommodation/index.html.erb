@@ -1,0 +1,56 @@
+<%= stylesheet_link_tag "accommodation_index" %>
+<h1 class="page-title">登録ルーム一覧</h1>
+
+<% @accommos.each do |accommodation|%>
+
+    <table class="accommodations_table">
+        <tbody >
+          <tr>
+            <td colspan="2" >
+              <%= image_tag"#{accommodation.accommo_image}",:width => "250px",:height => "200px" %>
+            </td>
+          <tr>
+            <td class="left">
+              施設名
+            </td>
+            <td class="right">
+              <%= accommodation.name %>
+            </td>
+          </tr>
+          <tr>
+            <td class="left">
+              エリア
+            </td>
+            <td class="right">
+              <%= accommodation.area%>
+            </td>
+          </tr>
+          <tr>
+            <td class="left">
+              料金
+            </td>
+            <td class="right">
+              <%= accommodation.fee %>
+            </td>
+          </tr>
+          <tr>
+            <td class="left">
+              コメント
+            </td>
+            <td class="right">
+              <%= accommodation.description%>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <%= form_tag("/accommodation/destroy", method: :post) do %>
+                 <input class="button" type="submit" value="削除する">
+                 <%= hidden_field_tag :id, accommodation.id %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+    </table>   
+    <div class="blank">
+    </div>
+<% end %>

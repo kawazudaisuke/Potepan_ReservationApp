@@ -1,0 +1,45 @@
+<%= stylesheet_link_tag"user_edit_prof"%>
+
+<h1 class="page-title">プロフィール編集</h1>
+<div class="user_image">
+  <%= image_tag "#{@user.image}",:width => "250px",:height => "200px" %>
+</div>
+<div class="container">
+
+<%= form_with url: user_update_path do |form| %>
+  <table>
+   <tr>
+     <td class="left">
+       プロフィール画像
+     </td>
+     <td class="right">
+        <% form.label :image%>
+        <%= form.file_field :image%>
+     </td>
+   </tr>
+    <tr>
+      <td class="left">
+        ユーザーネーム
+      </td>
+      <td class="right">
+        <input class="input_text" type="text" name="name" value="<%= @user.name%>">
+      </td>
+    </tr>
+    <tr>
+      <td class="left">
+        自己紹介
+      </td>
+      <td class="right">
+        <textarea name="introduction"  ><%= @user.introduction%></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan ="2" class="submit">
+        <input class="button"  type="submit" value="更新">
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+</div>
+<%= render"shared/account_prof"%>

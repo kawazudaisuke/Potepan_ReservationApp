@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag("user_edit")%>
+
+<h1 class="page-title">アカウント情報編集</h1>
+
+<div class="container">
+<%= form_with url: user_update_path do |form| %>
+  <table>
+    <tr>
+      <td class="left">
+        E-mailアドレス
+      </td>
+      <td class="right">
+        <input class="input_text" type="text" name="e_mail" value="<%= @user.e_mail%>">
+      </td>
+    </tr>
+    <tr>
+      <td class="left">
+        パスワード
+      </td>
+      <td class="right">
+        <input class="input_text" type="password" name="password" >
+      </td>
+    </tr>
+    <tr>
+      <td colspan ="2" class="submit">
+        <input class="button"  type="submit" value="更新">
+      </td>
+    </tr>
+  </table>
+<% end %>
+</div>
+<%= render"shared/account_prof"%>

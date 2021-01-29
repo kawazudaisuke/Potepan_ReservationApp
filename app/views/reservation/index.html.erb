@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag "reservation_index" %>
+<h1 class="page-title">予約一覧</h1>
+
+<% @reservations.each do |reservation|%>
+    <table class="reservation_table">
+    <% date_from = reservation.date_from %>
+　　<% date_to = reservation.date_to %>
+　　<% days_to_stay = date_to.to_date - date_from.to_date + 1 %>
+　　<% total_price = reservation.fee.to_i * reservation.guests.to_i * days_to_stay.to_i %>
+        <tbody >
+          <tr><td class="left">施設名</td><td class="right"><%= reservation.name %></td></tr>
+          <tr><td class="left">チェックイン</td><td class="right"><%= reservation.date_from.strftime("%Y年%-m月%-d日") %></td></tr>
+          <tr><td class="left">チェックアウト</td><td class="right"><%= reservation.date_to.strftime("%Y年%-m月%-d日")%></td></tr>
+          <tr><td class="left">料金</td><td class="right"><%= total_price%>円</td></tr>
+          <tr><td class="left">予約人数</td><td class="right"><%= reservation.guests%>名</td></tr>
+        </tbody>
+    </table>   
+    <div class="blank"></div>
+<% end %>
+ 
