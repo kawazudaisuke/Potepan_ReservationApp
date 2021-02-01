@@ -39,12 +39,12 @@
               <li><%= link_to("ユーザー","/user/show") %></li>
               <li><%= session[:e_mail]%></li>
               <li><%= link_to("ログアウト","/user/logout")%></li>
-              <li><%= link_to("新規登録","/user/signup")%></li>
+              <li><%= link_to("新規登録","/user/new")%></li>
               <li><%= link_to("プロフィール","/user/prof")%></li>
-              <li><%= link_to("予約一覧","/reservation/index")%></li>
+              <li><%= link_to("予約一覧","/reservation")%></li>
             <% else %>
               <li><%= link_to("ログイン","/user/login")%></li>
-              <li><%= link_to("新規登録","/user/signup")%></li>
+              <li><%= link_to("新規登録","/user/new")%></li>
             <% end %>
           </ul>
         </div>
@@ -53,7 +53,7 @@
           <ul>
             <% if session[:user_id]%>
               <li><%= link_to("ルーム登録","/accommodation/new")%></li>
-              <li><%= link_to("マイルーム一覧","/accommodation/index")%></li>
+              <li><%= link_to("マイルーム一覧","/accommodation")%></li>
               <li><%= link_to("ルーム予約","/accommodation/show")%></li>
             <% end %>
           </ul>

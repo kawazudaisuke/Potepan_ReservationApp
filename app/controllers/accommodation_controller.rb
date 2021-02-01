@@ -1,23 +1,10 @@
 class AccommodationController < ApplicationController
   protect_from_forgery
-  def top #トップ画面
-  end
   
-  def search #検索結果（ルーム名検索）
-      @results_name = Accommodation.where(name: params[:name])
-  end
-  
-  def search_area#検索結果（エリア検索）
-      @results_area = Accommodation.where(area: params[:area])
-  end
-
   def index #登録一覧
       @accommos = Accommodation.where(user_id: session[:user_id])
   end
   
-  def show#予約可能ルーム
-      @accommos = Accommodation.all
-  end
   
   def new　#ルーム新規登録
   end
@@ -37,10 +24,24 @@ class AccommodationController < ApplicationController
       end
   end
   
+  def show#予約可能ルーム
+      @accommos = Accommodation.all
+  end
   def destroy
       @accommo = Accommodation.find_by(id: params[:id])
       if @accommo.destroy
-         redirect_to("/accommodation/index")
+         redirect_to accommodation_index_url
       end
+  end
+#-------------------------以下、独自設定アクション------------------------------
+  def top #トップ画面
+  end
+  
+  def search #検索結果（ルーム名検索）
+      @results_name = Accommodation.where(name: params[:name])
+  end
+  
+  def search_area#検索結果（エリア検索）
+      @results_area = Accommodation.where(area: params[:area])
   end
 end

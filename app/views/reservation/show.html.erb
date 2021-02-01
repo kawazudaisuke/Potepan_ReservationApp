@@ -1,5 +1,5 @@
 <% require 'date' %>
-<%= stylesheet_link_tag "reservation_check" %>
+<%= stylesheet_link_tag "reservation_show" %>
 
 <h1 class ="page-title">予約確認</h1>
 
@@ -58,7 +58,7 @@
         </td>
     </tr>
     <!-- .to_dateでdateに変換する為に.to_dateを記載-->
-    <%= form_tag ("/reservation/create") do %>
+    <%= form_tag ("/reservation") do %>
         <%= hidden_field_tag :name, @accommo_name%>
         <%= hidden_field_tag :guests, @guests %>
         <%= hidden_field_tag :fee, @fee %>

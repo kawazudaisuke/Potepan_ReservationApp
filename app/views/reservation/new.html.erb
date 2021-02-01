@@ -4,7 +4,7 @@
 <div class="container"> 
 
 
-<%= form_tag ("/reservation/check") do%>
+<%= form_tag ("/reservation/:id"), method: :get do%>
     <%= hidden_field_tag :fee, @reservation.fee %>
     <%= hidden_field_tag :name, @reservation.name %>
     <%= hidden_field_tag :id, @reservation.id %>

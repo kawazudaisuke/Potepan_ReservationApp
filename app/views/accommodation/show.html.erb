@@ -10,7 +10,7 @@
           施設名
         </td>
         <td class="left">
-          <%= link_to( accommo.name,"/reservation/new/#{accommo.id}") %>
+          <%= link_to accommo.name, new_reservation_path(id: accommo.id ) %>
         </td>
       </tr>
       <tr>
