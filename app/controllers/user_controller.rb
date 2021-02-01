@@ -1,6 +1,6 @@
 class UserController < ApplicationController
 
-  def signup　#新規登録
+  def new　#新規登録
   end
   
   def create
@@ -11,7 +11,7 @@ class UserController < ApplicationController
                        image: params[:image])
                        
       if params[:password] != params[:password_2] #パスワードが確認用と一致しない場合は新規登録に戻る
-         redirect_to("/user/signup") and return
+         redirect_to("/user/new") and return
       end
       
       if @user.save
@@ -19,9 +19,42 @@ class UserController < ApplicationController
          session[:e_mail] = @user.e_mail 
          redirect_to("/user/show")
       else 
-         render("/user/signup")
+         render("/user/new")
       end
   end
+
+  def show #アカウント情報
+      @user = User.find_by(id: session[:user_id])
+  end
+
+  def edit #アカウント編集
+      @user = User.find_by(id: session[:user_id])
+  end
+
+  def update #
+      @user = User.find_by(id: session[:user_id])
+      unless params[:image].blank?
+         @user.image = params[:image]
+      end
+      unless params[:password].blank?
+         @user.password = params[:password]
+      end
+      unless params[:e_mail].blank?
+         @user.e_mail = params[:e_mail]
+      end
+      unless params[:name].blank?
+         @user.name = params[:name]
+      end
+      unless params[:introduction].blank?
+         @user.introduction = params[:introduction]
+      end
+      if @user.save
+         session[:e_mail] = @user.e_mail 
+         redirect_to("/user/prof")
+      end
+  end
+
+#----------------------以下独自設定アクション----------------------------------
 
   def login_form #ログイン
   end
@@ -46,11 +79,6 @@ class UserController < ApplicationController
       redirect_to("/user/login")
   end
 
-
-  def show #アカウント情報
-      @user = User.find_by(id: session[:user_id])
-  end
-
   def prof #プロフィール
       @user = User.find_by(id: session[:user_id])
   end
@@ -58,31 +86,4 @@ class UserController < ApplicationController
       @user = User.find_by(id: session[:user_id])
   end
 
-  def edit #アカウント編集
-      @user = User.find_by(id: session[:user_id])
-  end
-  
-  def update
-      @user = User.find_by(id: session[:user_id])
-      unless params[:image].blank?
-         @user.image = params[:image]
-      end
-      unless params[:password].blank?
-         @user.password = params[:password]
-      end
-      unless params[:e_mail].blank?
-         @user.e_mail = params[:e_mail]
-      end
-      unless params[:name].blank?
-         @user.name = params[:name]
-      end
-      unless params[:introduction].blank?
-         @user.introduction = params[:introduction]
-      end
-      if @user.save
-         session[:e_mail] = @user.e_mail 
-         redirect_to("/user/prof")
-      end
-  end
-  
 end

@@ -43,10 +43,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <%= form_tag("/accommodation/destroy", method: :post) do %>
-                 <input class="button" type="submit" value="削除する">
-                 <%= hidden_field_tag :id, accommodation.id %>
-              <% end %>
+              <%= link_to "削除", accommodation_path(id: accommodation.id), method: :delete  %>
             </td>
           </tr>
         </tbody>

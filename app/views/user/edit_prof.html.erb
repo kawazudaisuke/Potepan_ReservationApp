@@ -6,7 +6,7 @@
 </div>
 <div class="container">
 
-<%= form_with url: user_update_path do |form| %>
+<%= form_with model: @user do |form| %>
   <table>
    <tr>
      <td class="left">
@@ -30,7 +30,7 @@
         自己紹介
       </td>
       <td class="right">
-        <textarea name="introduction"  ><%= @user.introduction%></textarea>
+        <textarea name="introduction"><%= @user.introduction%></textarea>
       </td>
     </tr>
     <tr>

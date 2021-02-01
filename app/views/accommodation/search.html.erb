@@ -8,7 +8,7 @@
             <div class="result">
                 <tr>
                     <td class="left">
-                        <%= link_to( result.name,"/reservation/new/#{result.id}")%>
+                        <%= link_to result.name, new_reservation_path(id: result.id )%>
                     </td>
                     <td class="right">
                         <%= image_tag "#{result.accommo_image}",:width => "250px",:height => "200px" %>
